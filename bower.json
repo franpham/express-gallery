@@ -1,0 +1,22 @@
+{
+  "name": "express-gallery",
+  "description": "Express Gallery ===============",
+  "main": "server.js",
+  "authors": [
+    "franpham <franpham@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/franpham/express-gallery",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.3"
+  }
+}

@@ -1,0 +1,3 @@
+@import "partials/clearfix";
+@import "partials/settings";    // settings must be loaded before components imported by "foundation";
+@import "foundation.scss";      // gulpfile.js makes path to foundation relative;
