@@ -1,3 +1,72 @@
 @import "partials/clearfix";
 @import "partials/settings";    // settings must be loaded before components imported by "foundation";
 @import "foundation.scss";      // gulpfile.js makes path to foundation relative;
+
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+
+$desktop: 'only screen and (min-width: 600px)';
+$phone: 'only screen and (max-width: 600px)';
+
+html, body {
+  @media #{$desktop} {
+    width: 1200px;
+  }
+  @media #{$phone} {
+    width: 600px;
+  }
+}
+
+.sidepics {
+  margin: 0 16px;
+  max-width: 300px;
+}
+
+.info {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.header {
+  margin-top: 16px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.mainContent {
+  margin: auto;
+  max-width: 600px;
+}
+
+.headImage {
+  height: 300px;
+  margin-bottom: 32px;
+  background-size: cover;
+}
+
+.image {
+  height: 300px;
+  background-size: cover;
+}
+
+.title {
+  padding: 0 8px;
+  color: gray;
+  font-family: 'Architects Daughter', cursive;
+}
+
+.link {
+  color: gray;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: 'Architects Daughter', cursive;
+}
+
+.link:hover {
+  color: blue;
+}
+
+.footer {
+  margin: 16px 0;
+}
