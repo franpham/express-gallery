@@ -1,0 +1,32 @@
+
+extend ./layouts/mainLayout
+include ./mixins/templater
+
+block title
+  title Photo Details
+
+block content
+  div(class="row")
+    h1(class="small-centered-12 columns") Image Gallery
+    div(class="small-centered-12 columns")
+      div(class="headImage", style="background-image: url('../images/cat-head.jpg');")
+
+  div(class="row")
+    div(class="medium-4 small-push-12 medium-reset-order columns")
+      div(class="image", style="background-image: url('../images/cat3.gif');")
+      div(class="link")
+        a(href="https://rudefeed.com/meow-16-signs-cats-are-most-definitely-your-spirit-animals/") rudefeed.com
+        span(class="title") cats-are-most-definitely-your-spirit-animals
+    div(class="medium-4 small-push-12 medium-reset-order columns")
+      div(class="image", style="background-image: url('../images/cat2.png');")
+      div(class="link")
+        a(href="http://boredomtherapy.com/reaction-cats/") boredomtherapy.com
+        span(class="title") reaction-cats
+    div(class="medium-4 small-push-12 medium-reset-order columns")
+      div(class="image", style="background-image: url('../images/cat1.jpg');")
+      div(class="link")
+        a(href="http://www.businessinsider.com/a-parasite-found-in-cats-could-be-manipulating-our-brains-2012-2") www.businessinsider.com
+        span(class="title") a-parasite-found-in-cats
+
+  div(class="row")
+    div(class="footer")

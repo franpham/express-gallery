@@ -1,0 +1,6 @@
+
+mixin listUsers(users)
+  each user in users
+    - link = '"/users/' + user.id + '"';
+    li
+      a(href=link)= user.username

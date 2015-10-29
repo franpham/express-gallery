@@ -1,0 +1,17 @@
+
+extend ./layouts/mainLayout
+
+block title
+  title Create/ Edit Photo
+
+block content
+  form(id="photoForm", method="POST", action="/new")
+    if put
+      input(type="hidden", name="_method", value="PUT")
+    label Title:
+      input(type="text", name="title")
+    label Link:
+      input(type="text", name="link")
+    label Info:
+      input(type="text", name="info")
+    button(type="submit") Update

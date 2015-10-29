@@ -2,10 +2,10 @@
 doctype html
 html
   head
-    title Photo Gallery
+    link(rel="stylesheet", href="/css/styles.css")
+    meta(charset="UTF-8")
+    block title
   body
-    h1 Photo Gallery
-
-  block content
-
-  include footer
+    inclide:html header.html
+    block content
+    include:html footer.html

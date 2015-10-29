@@ -8,18 +8,25 @@
 $desktop: 'only screen and (min-width: 600px)';
 $phone: 'only screen and (max-width: 600px)';
 
-html, body {
-  @media #{$desktop} {
-    width: 1200px;
-  }
-  @media #{$phone} {
-    width: 600px;
-  }
+// ------------------     forms     ---------------
+
+#photoForm, #userForm {
+  width: 400px;
+  padding: 16px;
+  margin: auto;
 }
+
+#usersList {
+  width: 400px;
+  padding: 16px;
+  margin: auto;
+}
+
+// ---------------   photo details  ---------------
 
 .sidepics {
   margin: 0 16px;
-  max-width: 300px;
+  max-width: 400px;
 }
 
 .info {
@@ -27,15 +34,22 @@ html, body {
   font-family: sans-serif;
 }
 
+.mainContent {
+  margin: auto;
+  @media #{$desktop} {
+    max-width: 800px;
+  }
+  @media #{$phone} {
+    max-width: 600px;
+  }
+}
+
+// -----------------  photos gallery  -------------
+
 .header {
   margin-top: 16px;
   text-align: center;
   font-family: 'Orbitron', sans-serif;
-}
-
-.mainContent {
-  margin: auto;
-  max-width: 600px;
 }
 
 .headImage {
@@ -61,10 +75,6 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   font-family: 'Architects Daughter', cursive;
-}
-
-.link:hover {
-  color: blue;
 }
 
 .footer {

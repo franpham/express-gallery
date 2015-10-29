@@ -1,0 +1,10 @@
+
+extend ./layouts/mainLayout
+include ./mixins/templater
+
+block title
+  title Users List
+
+block content
+  ul(id="usersList")
+    +listUsers(users)
