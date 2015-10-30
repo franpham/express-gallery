@@ -1,6 +1,23 @@
 
 mixin listUsers(users)
   each user in users
-    - link = '"/users/' + user.id + '"';
     li
-      a(href=link)= user.username
+      a(href="/users/#{user.id}")= user.username
+
+mixin layoutMainPhotos(photos)
+  each photo, index in photos
+    - site = photo.link.substring(0, photo.link.indexOf('/')) + ':';
+    li
+      div(class="image", style="background-image: url('#{photo.link}')")
+      div(class="link")
+        a(href="/photos/#{photo.id}")= site
+        span(class="title")= photo.title
+
+mixin layoutSidePhotos(photos)
+  each photo, index in photos
+    - site = photo.link.substring(0, photo.link.indexOf('/')) + ':';
+    li
+      div(class="image", style="background-image: url('#{photo.link}')")
+      div(class="link")
+        a(href="/photos/#{photo.id}")= site
+        span(class="title")= photo.title

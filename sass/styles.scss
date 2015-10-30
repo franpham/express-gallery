@@ -10,23 +10,45 @@ $phone: 'only screen and (max-width: 600px)';
 
 // ------------------     forms     ---------------
 
-#photoForm, #userForm {
+#photoForm, #userForm, #loginForm, #denied403 {
   width: 400px;
-  padding: 16px;
-  margin: auto;
+  padding: 32px;
+  margin: auto;   // center horizontally;
+
+  top: 50%;       // center vertically;
+  position: relative;
+  transform: translateY(-50%);
 }
 
 #usersList {
   width: 400px;
-  padding: 16px;
+  padding: 32px;
   margin: auto;
 }
 
 // ---------------   photo details  ---------------
 
-.sidepics {
-  margin: 0 16px;
+#sidePhotos {
+  float: right;
+  overflow: scroll;
   max-width: 400px;
+  padding: 16px;
+  margin: auto;
+  @media #{$phone} {
+    display: none;
+  }
+}
+
+#mainPhoto {
+  margin: auto;
+  @media #{$desktop} {
+    max-width: 800px;
+    padding: 16px;
+  }
+  @media #{$phone} {
+    max-width: 600px;
+    padding: 16px;
+  }
 }
 
 .info {
@@ -34,39 +56,28 @@ $phone: 'only screen and (max-width: 600px)';
   font-family: sans-serif;
 }
 
-.mainContent {
-  margin: auto;
-  @media #{$desktop} {
-    max-width: 800px;
-  }
-  @media #{$phone} {
-    max-width: 600px;
-  }
-}
-
 // -----------------  photos gallery  -------------
 
 .header {
-  margin-top: 16px;
+  margin: auto;
+  padding: 16px;
+}
+
+.headTitle {
   text-align: center;
   font-family: 'Orbitron', sans-serif;
 }
 
 .headImage {
   height: 300px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   background-size: cover;
 }
 
 .image {
+  padding: 8px 0;
   height: 300px;
   background-size: cover;
-}
-
-.title {
-  padding: 0 8px;
-  color: gray;
-  font-family: 'Architects Daughter', cursive;
 }
 
 .link {
@@ -77,6 +88,7 @@ $phone: 'only screen and (max-width: 600px)';
   font-family: 'Architects Daughter', cursive;
 }
 
-.footer {
-  margin: 16px 0;
+.title {
+  color: gray;
+  font-family: 'Architects Daughter', cursive;
 }

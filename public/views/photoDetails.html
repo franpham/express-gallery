@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Photo Gallery</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <title>Photo Details</title>
 </head>
 <body>
   <div class="header">
-    <h1 class="headTitle">Photo Gallery</h1>
-    <div class="headImage" style="background-image: url('../images/cat-head.jpg');"></div>
+    <h1 class="headTitle">Photo Details</h1>
+    <div class="link">
+      <a href="http://www.wchs4pets.org/annies-blog/2015/03/its-a-miracle/">www.wchs4pets.org</a>
+      <span class="title">its-a-miracle</span>
+    </div>
   </div>
 
-  <ul class="medium-block-grid-3 small-block-grid-1">
+  <div id="sidePhotos">
+    <ul class="small-block-grid-1">
     <li>
       <div class="image" style="background-image: url('../images/cat3.gif');"></div>
       <div class="link">
@@ -33,7 +37,13 @@
         <span class="title">a-parasite-found-in-cats</span>
       </div>
     </li>
-  </ul>
+    </ul>
+  </div>
+
+  <div id="mainPhoto">
+    <div class="headImage" style="background-image: url('../images/cat-head.jpg');"></div>
+    <div class="info">Description for the photo...</div>
+  </div>
   <!-- CHANGE PATH WHEN MOVING TO ANOTHER FOLDER -->
   <script src="../js/jquery.min.js"></script>
   <script src="../js/foundation.min.js"></script>

@@ -3,35 +3,28 @@ extend ./layouts/mainLayout
 include ./mixins/templater
 
 block title
-  title Photo Gallery
+  title Photo Details
 
 block content
-  div(class="row")
-    h1(class="small-centered-12 columns header") Photo Details
-    div(class="small-12 columns link")
-      a(href="http://www.wchs4pets.org/annies-blog/2015/03/its-a-miracle/") www.wchs4pets.org
-      span(class="title") its-a-miracle
+  div(class="header")
+    h1(class="headTitle") Photo Gallery
+    div(class="headImage", style="background-image: url('../images/cat-head.jpg');")
 
-  div(class="row")
-    div(class="medium-8 small-12 columns image")
-      div(class="mainContent")
-        div(class="headImage", style="background-image: url('../images/cat-head.jpg');")
-        div(class="info") Description for the photo...
+  ul(class="medium-block-grid-3 small-block-grid-1")
+    +layoutMainPhotos(photos);
 
-    div(class="medium-4 columns hide-for-small-only")
-      div(class="sidepics")
-        div(class="image", style="background-image: url('../images/cat3.gif');")
-        div(class="link")
-          a(href="https://rudefeed.com/meow-16-signs-cats-are-most-definitely-your-spirit-animals/") rudefeed.com
-          span(class="title") cats-are-most-definitely-your-spirit-animals
-        div(class="image", style="background-image: url('../images/cat2.png');")
-        div(class="link")
-          a(href="http://boredomtherapy.com/reaction-cats/") boredomtherapy.com
-          span(class="title") reaction-cats
-        div(class="image", style="background-image: url('../images/cat1.jpg');")
-        div(class="link")
-          a(href="http://www.businessinsider.com/a-parasite-found-in-cats-could-be-manipulating-our-brains-2012-2") www.businessinsider.com
-          span(class="title") a-parasite-found-in-cats
-
-  div(class="row")
-    div(class="footer")
+    li
+      div(class="image", style="background-image: url('../images/cat3.gif');")
+      div(class="link")
+        a(href="https://rudefeed.com/meow-16-signs-cats-are-most-definitely-your-spirit-animals/") rudefeed.com:
+        span(class="title") cats-are-most-definitely-your-spirit-animals
+    li
+      div(class="image", style="background-image: url('../images/cat2.png');")
+      div(class="link")
+        a(href="http://boredomtherapy.com/reaction-cats/") boredomtherapy.com:
+        span(class="title") reaction-cats
+    li
+      div(class="image", style="background-image: url('../images/cat1.jpg');")
+      div(class="link")
+        a(href="http://www.businessinsider.com/a-parasite-found-in-cats-could-be-manipulating-our-brains-2012-2") www.businessinsider.com:
+        span(class="title") a-parasite-found-in-cats

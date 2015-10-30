@@ -1,0 +1,13 @@
+
+extend ./layouts/mainLayout
+
+block title
+  title Photo Gallery: Login
+
+block content
+  form(id="loginForm", method="POST", action="/login")
+    label Username:
+      input(type="text", name="username")
+    label Password:
+      input(type="password", name="password")
+    button(type="submit") Login

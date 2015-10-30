@@ -8,10 +8,11 @@ block content
   form(id="photoForm", method="POST", action="/new")
     if put
       input(type="hidden", name="_method", value="PUT")
+    input(type="hidden", name="userId", value="#{photo.userId}")
     label Title:
-      input(type="text", name="title")
+      input(type="text", name="title" value="#{photo.title}")
     label Link:
-      input(type="text", name="link")
+      input(type="text", name="link" value="#{photo.link}")
     label Info:
-      input(type="text", name="info")
+      input(type="text", name="info" value="#{photo.info}")
     button(type="submit") Update

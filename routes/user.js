@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('./models');
 var User = db.User;
-// ALL PATHS ARE RELATIVE TO /gallery
+// ALL PATHS ARE RELATIVE TO /users
 
 router.get('/', function(req, res) {
   User.findAll()
@@ -56,3 +56,5 @@ router.get('/photos/:id', function(req, res) {
       res.render('photos');
     });
 });
+
+module.exports = router;
