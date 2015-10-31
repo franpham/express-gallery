@@ -6,22 +6,16 @@ var db = require('./models');
 var Photo = db.Photo;
 // ALL PATHS ARE RELATIVE TO '/photos', except for redirect();
 
+function verifyUserId(req, res, next) {
+  if (!req.session || (req.method !== 'GET' && req.body.user_id !== req.session.user_id))
+    return res.redirect('/403');
+  next();
+}
+
 router.get('/', function(req, res) {
   Photo.findAll({ limit: 100, order: [['updatedAt', 'DESC']] })
     .then(function(photos) {
       res.render('photosGrid', { photos: photos });
-    });
-});
-
-// foreign key is model name + key name, camelCased;
-router.post('/new', function(req, res) {
-  if (!req.session)
-    return res.redirect('/' + 403);
-  var link = req.body.link;
-  link = link.indexOf('https') ? link.substring(7) : (link.indexOf('http') ? link.substring(6) : link);
-  Photo.create({ title: req.body.title, link: link, info: req.body.info, userId: req.session.userId })
-    .then(function(photo) {
-      res.redirect('/photos/' + photo.id);
     });
 });
 
@@ -43,38 +37,42 @@ router.get('/:id', function(req, res) {
     });
 });
 
-router.get('/edit', function(req, res) {    // returns form to make new Photo;
-  if (!req.session)
-    return res.redirect('/' + 403);
-  var temp = { userId: req.session.userId, title: '', link: '', info: '' };
-  res.render('photoForm', { photo: temp });
-});
-
-router.get('/edit/:id', function(req, res) {
-  if (!req.session || req.body.userId !== req.session.userId)
-    return res.redirect('/' + 403);
-  Photo.findById(req.params.id)
+// foreign key is model name + key name; case is determined by model's underscored;
+router.post('/new', verifyUserId, function(req, res) {
+  var link = req.body.link;
+  link = link.indexOf('https') ? link.substring(7) : (link.indexOf('http') ? link.substring(6) : link);
+  Photo.create({ title: req.body.title, link: link, info: req.body.info, user_id: req.session.user_id })
     .then(function(photo) {
-      res.render('photoForm', { photo: photo });
+      res.redirect('/photos/' + photo.id);
     });
 });
 
-router.put('/:id', function(req, res) {
-  if (!req.session || req.body.userId !== req.session.userId)
-    return res.redirect('/' + 403);
+router.get('/edit', verifyUserId, function(req, res) {    // returns form to make new Photo;
+  var temp = { title: '', link: '', info: '', user_id: '' };
+  res.render('photoForm', { photo: temp });
+});
+
+router.get('/edit/:id', verifyUserId, function(req, res) {
+  Photo.findById(req.params.id)
+    .then(function(photo) {
+      if (photo.user_id !== req.session.user_id)
+        return res.redirect('/403');    // MUST set put for hidden field;
+      res.render('photoForm', { photo: photo, put: "PUT" });
+    });
+});
+
+router.put('/:id', verifyUserId, function(req, res) {
   var link = req.body.link;
   link = link.indexOf('https') ? link.substring(7) : (link.indexOf('http') ? link.substring(6) : link);
   Photo.update({ title: req.body.title, link: link, info: req.body.info },
-               { where: { id: req.params.id }})
+               { where: { id: req.params.id, user_id: req.body.user_id }})
     .then(function(num) {
       res.redirect('/photos/' + req.params.id);
     });
 });
 
-router.delete('/:id', function(req, res) {
-  if (!req.session || req.body.userId !== req.session.userId)
-    return res.redirect('/' + 403);
-  Photo.destroy({ where: { id: req.params.id }})
+router.delete('/:id', verifyUserId, function(req, res) {
+  Photo.destroy({ where: { id: req.params.id, user_id: req.body.user_id }})
     .then(function(num) {
       res.redirect('/photos/');
     });

@@ -1,13 +1,13 @@
 
-extend ./layouts/mainLayout
+extends ./layouts/mainLayout
 
 block title
   title Create/ Edit User
 
 block content
-  form(id="userForm", method="POST", action="/new")
+  form(id="userForm", method="POST", action="/new/#{user.id}")
     if put
       input(type="hidden", name="_method", value="PUT")
     label Username:
-      input(type="text", name="username")
+      input(type="text", name="username", value="#{user.username}")
     button(type="submit") Update

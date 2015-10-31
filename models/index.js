@@ -14,8 +14,9 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-fs
-  .readdirSync(__dirname)
+// SEE OAUTH-DEMO project FOR USAGE OF .env file; must add .env to .gitignore for security!
+
+fs.readdirSync(__dirname)
   .filter(function(file) {
     return (file.indexOf('.') !== 0) && (file !== basename);
   })
@@ -33,5 +34,4 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 module.exports = db;
